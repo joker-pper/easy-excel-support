@@ -1,12 +1,7 @@
 package com.github.jokerpper.easyexcel.read.utils;
 
-import com.alibaba.excel.EasyExcel;
-import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.context.AnalysisContext;
-import com.alibaba.excel.metadata.CellData;
-import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.alibaba.excel.read.listener.ReadListener;
-import com.alibaba.excel.read.metadata.ReadSheet;
 import com.github.jokerpper.easyexcel.read.options.ExcelReadOptions;
 import com.github.jokerpper.easyexcel.read.listener.AbstractBatchResolveAndConvertReadListener;
 import com.github.jokerpper.easyexcel.read.listener.BreakReadListener;
@@ -149,30 +144,32 @@ public class ExcelReadSupportUtilsComplexTest {
         ReadListener<Read001ByIndex> readListener = new BreakReadListener<Read001ByIndex>() {
 
             @Override
-            public void invokeHead(Map<Integer, CellData> headMap, AnalysisContext context) {
+            public void invokeHeadByString(Map<Integer, String> headMap, AnalysisContext context) {
                 System.out.println(String.format("head: %s", headMap));
-
                 //验证为正确的表头
                 int rowIndex = context.readRowHolder().getRowIndex();
+
+                int headEndIndex = headRowsList.size() - 1;
+
                 List<String> headRowList = headRowsList.get(rowIndex);
-                if (rowIndex != 1) {
-                    List<String> rowTextList = headMap.values().stream().map(CellData::getStringValue).collect(Collectors.toList());
+
+                List<String> rowTextList = headMap.values().stream().filter(it -> it != null && !it.isEmpty()).map(String::trim).collect(Collectors.toList());
+
+                if (rowIndex == headEndIndex) {
+                    //为表头的最后一行时,设置停止读取
+                    makeBreakRead();
+
+                    if (rowTextList.size() != headRowList.size() || Optional.ofNullable(headMap.get(0)).map(String::trim).map(it -> !it.startsWith(headRowList.get(0))).orElse(true)) {
+                        //当size不一致或第一列不是以对应的字符串开始时
+                        throw new IllegalArgumentException("无法识别的Excel文件,请确认是否上传正确！");
+                    }
+
+                } else {
                     if (!headRowList.equals(rowTextList)) {
                         //当结果不一致时
                         throw new IllegalArgumentException("无法识别的Excel文件,请确认是否上传正确！");
                     }
-                } else {
-                    if (headMap.size() != headRowList.size() || Optional.ofNullable(headMap.get(0).getStringValue()).map(it -> !it.startsWith(headRowList.get(0))).orElse(true)) {
-                        //当不是以对应的字符串开始时
-                        throw new IllegalArgumentException("无法识别的Excel文件,请确认是否上传正确！");
-                    }
                 }
-
-                if (rowIndex == headRowsList.size() - 1) {
-                    //为表头的最后一行时,设置停止读取
-                    makeBreakRead();
-                }
-
             }
 
             @Override

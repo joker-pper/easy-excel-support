@@ -4,6 +4,7 @@ import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.metadata.CellData;
 import com.alibaba.excel.metadata.CellExtra;
 import com.alibaba.excel.read.listener.ReadListener;
+import com.alibaba.excel.util.ConverterUtils;
 
 import java.util.Map;
 
@@ -20,6 +21,16 @@ public interface DefaultReadListener<T> extends ReadListener<T> {
      */
     @Override
     default void invokeHead(Map<Integer, CellData> headMap, AnalysisContext context) {
+        invokeHeadByString(ConverterUtils.convertToStringMap(headMap, context), context);
+    }
+
+    /**
+     * When analysis one head row trigger invoke function will call this function.
+     *
+     * @param headMap
+     * @param context
+     */
+    default void invokeHeadByString(Map<Integer, String> headMap, AnalysisContext context) {
     }
 
     /**
