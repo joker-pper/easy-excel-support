@@ -8,7 +8,7 @@
 
 + java 1.8+
 
-+ EasyExcel 2.x
++ EasyExcel 3.x
 
 ## easy-excel-read-support
 

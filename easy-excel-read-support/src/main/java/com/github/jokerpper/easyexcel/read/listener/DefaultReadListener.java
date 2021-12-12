@@ -1,8 +1,8 @@
 package com.github.jokerpper.easyexcel.read.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
-import com.alibaba.excel.metadata.CellData;
 import com.alibaba.excel.metadata.CellExtra;
+import com.alibaba.excel.metadata.data.ReadCellData;
 import com.alibaba.excel.read.listener.ReadListener;
 import com.alibaba.excel.util.ConverterUtils;
 
@@ -20,7 +20,7 @@ public interface DefaultReadListener<T> extends ReadListener<T> {
      * @param context
      */
     @Override
-    default void invokeHead(Map<Integer, CellData> headMap, AnalysisContext context) {
+    default void invokeHead(Map<Integer, ReadCellData<?>> headMap, AnalysisContext context) {
         invokeHeadByString(ConverterUtils.convertToStringMap(headMap, context), context);
     }
 
