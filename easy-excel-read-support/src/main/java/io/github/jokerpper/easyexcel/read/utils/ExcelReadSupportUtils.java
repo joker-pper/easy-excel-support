@@ -56,7 +56,7 @@ public class ExcelReadSupportUtils {
      * @param readOptions
      * @param <T>
      */
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static <T> void read(InputStream inputStream, ReadListener<T> readListener, ExcelReadOptions<T> readOptions) {
         ExcelReaderBuilder readerBuilder = EasyExcel.read(inputStream).registerReadListener(readListener);
         ExcelReaderSheetBuilder readerSheetBuilder;
@@ -102,6 +102,7 @@ public class ExcelReadSupportUtils {
      * @param readOptions
      * @param readSheetOptionsList
      */
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions, List<ExcelReadSheetOptions<?>> readSheetOptionsList) {
         if (readSheetOptionsList == null || readSheetOptionsList.isEmpty()) {
             throw new IllegalArgumentException("readSheetOptionsList Must Be Not Empty!");
@@ -141,6 +142,7 @@ public class ExcelReadSupportUtils {
      * @param readSheetOptionsList
      * @return
      */
+    @SuppressWarnings({"rawtypes", "unchecked"})
     private static List<ReadSheet> getReadSheetList(List<ExcelReadSheetOptions<?>> readSheetOptionsList) {
         List<ReadSheet> readSheetList = new ArrayList<>(readSheetOptionsList.size());
         for (ExcelReadSheetOptions readSheetOptions : readSheetOptionsList) {
