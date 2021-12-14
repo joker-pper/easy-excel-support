@@ -10,6 +10,18 @@
 
 + EasyExcel 3.x
 
+## 项目版本
+
+https://search.maven.org/artifact/io.github.joker-pper/easy-excel-support
+
+```
+注: 
+
+  1.x版本对应的为EasyExcel 2.x
+  
+  2.x版本对应的为EasyExcel 3.x
+```
+
 ## easy-excel-read-support
 
 ### 功能
@@ -20,6 +32,19 @@
 
 + 提供部分listener支持业务
 
+
+### 快速使用
+
+```
+<dependency>
+  <groupId>io.github.joker-pper</groupId>
+  <artifactId>easy-excel-read-support</artifactId>
+  <version>${version}</version>
+</dependency>
+
+注: 
+  当前release: 2.0.0
+```
 
 ### 核心API
 
