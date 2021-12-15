@@ -28,7 +28,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithPassword() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001-encrypted.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-encrypted.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         String password = "123456";
@@ -49,7 +49,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithDefaultHeadRowNum() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions<Read001> readOptions = ExcelReadOptions.<Read001>builder().headClass(Read001.class).headRowNumber(1).build();
@@ -69,7 +69,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithOtherHeadRowNum() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001-head-row-num.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-head-row-num.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions<Read001ByIndex> readOptions = ExcelReadOptions.<Read001ByIndex>builder().headClass(Read001ByIndex.class).headRowNumber(2).build();
@@ -89,7 +89,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithOtherHeadRowNumForCustomData() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions readOptions = ExcelReadOptions.builder().headRowNumber(0).build();
@@ -130,7 +130,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithValidateHead() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001-head-row-num.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-head-row-num.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions<Read001ByIndex> readOptions = ExcelReadOptions.<Read001ByIndex>builder().headClass(Read001ByIndex.class)
@@ -192,7 +192,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithMoreSheetByReadAll() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001-more-sheet.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-more-sheet.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions<Read001> readOptions = ExcelReadOptions.<Read001>builder().headClass(Read001.class).isReadAll(true).build();
@@ -212,7 +212,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithMoreSheet() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001-more-sheet.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-more-sheet.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         //读取表一的数据
@@ -242,7 +242,7 @@ public class ExcelReadSupportUtilsComplexTest {
      */
     @Test
     public void readWithMoreSheetByRepeatedRead() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001-more-sheet-repeated.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-more-sheet-repeated.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelRepeatedReadOptions readOptions = ExcelRepeatedReadOptions.builder().build();
