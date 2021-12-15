@@ -25,7 +25,7 @@ public class ExcelReadSupportUtilsTest {
     @Test
     public void readBySimple() throws FileNotFoundException {
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
         ExcelReadSupportUtils.read(inputStream, new DefaultReadListener<Map<Integer, Object>>() {
 
@@ -53,7 +53,7 @@ public class ExcelReadSupportUtilsTest {
     @Test
     public void readBySimpleWithClass() throws FileNotFoundException {
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadSupportUtils.read(inputStream, Read001.class, new DefaultReadListener<Read001>() {
@@ -79,7 +79,7 @@ public class ExcelReadSupportUtilsTest {
      */
     @Test
     public void readWithBatchResolveListener() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         BatchResolveReadListener<Read001> readListener = new BatchResolveReadListener<>(dataList -> {
@@ -99,7 +99,7 @@ public class ExcelReadSupportUtilsTest {
      */
     @Test
     public void readWithBatchResolveAndConvertListener() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
         AbstractBatchResolveAndConvertReadListener<Read001> readListener = new AbstractBatchResolveAndConvertReadListener<Read001>(dataList -> {
             //进行处理该批数据,e.g: 持久化到数据库 (不能保证整批数据全是合法的,如有特殊需求需要额外处理)
@@ -127,7 +127,7 @@ public class ExcelReadSupportUtilsTest {
      */
     @Test
     public void readWithBatchResolveReadListenerAndValidate() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         //第一遍先校验数据(如果有要求是文件中必须不包含错误数据时)
@@ -164,7 +164,7 @@ public class ExcelReadSupportUtilsTest {
      */
     @Test
     public void readWithValidateReadListenerAndBatchResolveReadListener() throws FileNotFoundException {
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         //第一遍先校验数据(如果有要求是文件中必须不包含错误数据时)

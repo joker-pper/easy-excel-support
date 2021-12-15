@@ -75,7 +75,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
         ExcelReadSupportUtils.read(inputStream, new DefaultReadListener<Map<Integer, Object>>() {
 
@@ -99,7 +99,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadSupportUtils.read(inputStream, Read001.class, new DefaultReadListener<Read001>() {
@@ -122,7 +122,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         BatchResolveReadListener<Read001> readListener = new BatchResolveReadListener<>(dataList -> {
@@ -139,7 +139,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         //第一遍先校验数据(如果有要求是文件中必须不包含错误数据时)
@@ -172,7 +172,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 > 通过ValidateReadListener简单验证再通过BatchResolveReadListener读取数据
 
 ```
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         //第一遍先校验数据(如果有要求是文件中必须不包含错误数据时)
@@ -201,7 +201,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
         
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
         AbstractBatchResolveAndConvertReadListener<Read001> readListener = new AbstractBatchResolveAndConvertReadListener<Read001>(dataList -> {
             //进行处理该批数据,e.g: 持久化到数据库 (不能保证整批数据全是合法的,如有特殊需求需要额外处理)
@@ -226,7 +226,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
 
-        File inputFile = new File("src\\test\\resources\\files\\read-001.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions readOptions = ExcelReadOptions.builder().headRowNumber(0).build();
@@ -264,7 +264,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 
 ```
         
-        File inputFile = new File("src\\test\\resources\\files\\read-001-head-row-num.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-head-row-num.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions<Read001ByIndex> readOptions = ExcelReadOptions.<Read001ByIndex>builder().headClass(Read001ByIndex.class)
@@ -322,7 +322,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 > 读取多个表,一次全部读取(表格式内容需一致)
 
 ```
-        File inputFile = new File("src\\test\\resources\\files\\read-001-more-sheet.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-more-sheet.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelReadOptions<Read001> readOptions = ExcelReadOptions.<Read001>builder().headClass(Read001.class).isReadAll(true).build();
@@ -337,7 +337,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 > 读取多个表 - 多次读取
 
 ```
-        File inputFile = new File("src\\test\\resources\\files\\read-001-more-sheet.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-more-sheet.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         //读取表一的数据
@@ -364,7 +364,7 @@ void repeatedRead(InputStream inputStream, ExcelRepeatedReadOptions readOptions,
 > 读取多个表 - 一次读取
 
 ```
-        File inputFile = new File("src\\test\\resources\\files\\read-001-more-sheet-repeated.xlsx");
+        File inputFile = new File("src/test/resources/files/read-001-more-sheet-repeated.xlsx");
         InputStream inputStream = new FileInputStream(inputFile);
 
         ExcelRepeatedReadOptions readOptions = ExcelRepeatedReadOptions.builder().build();
